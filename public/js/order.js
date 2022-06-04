@@ -1,8 +1,13 @@
 
 
 const submitBtn = document.querySelector('#submit-btn')
+const futureSubmitBtn = document.querySelector('#future-submit')
 const datePicker = document.querySelector("#date-select")
 const timeBtns = document.querySelector(".timeBtns")
+const showFutureBtn = document.querySelector("#show-future")
+const cancelFutureBtn = document.querySelector("#cancel-future")
+const nowDiv = document.querySelector(".now");
+const futureDiv = document.querySelector(".future");
 const SLOTS_PER_HOUR = 4
 let chosenTime;
 //hack for using getDay() uses 0 indexed week sun-sat, so array indexes match.
@@ -100,7 +105,7 @@ timeBtns.addEventListener("click",e=>{
         let dateInfo = `${datePicker.value} ${e.target.getAttribute("data-hour")}`;
         console.log("time",dateInfo);
         console.log("as date",new Date(dateInfo));
-        document.querySelector(".selected-slot").textContent = `you selected ${dateFns.format(dateInfo,"dddd, MMMM Do [at] h:mm a")}`
+        document.querySelector(".selected-slot-span").textContent = `you selected ${dateFns.format(dateInfo,"dddd, MMMM Do [at] h:mm a")}`
         document.querySelector(".selected-slot").classList.remove("hide")
         document.querySelector(".change-time-btn").classList.remove("hide")
         document.querySelector(".timeBtns").classList.add("hide")
@@ -158,4 +163,15 @@ const orderFormSubmit = async function (event) {
     }
 };
 
+showFutureBtn.addEventListener("click",e=>{
+    e.preventDefault();
+    nowDiv.classList.add("hide")
+    futureDiv.classList.remove("hide")
+})
+cancelFutureBtn.addEventListener("click",e=>{
+    nowDiv.classList.remove("hide")
+    futureDiv.classList.add("hide")
+})
+
 submitBtn.addEventListener("click", orderFormSubmit);
+futureSubmitBtn.addEventListener("click", orderFormSubmit);

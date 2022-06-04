@@ -28,10 +28,12 @@ router.get("/new-order", withAuth, async (req, res) => {
   const count = await Order.count()
   const hours = Math.floor(count / 4)
   const minutes = (count % 4) * 15
-  return res.render("new-order", {
+  const {cookingAccess} = await Client.findByPk(req.session.userId)
+  return res.render("joe-order", {
     hours, 
     minutes, 
     count, 
+    cookingAccess,
     loggedIn: req.session.loggedIn ? true : false,
     isAdmin: req.session.role==="admin"? true : false
   });

@@ -206,6 +206,9 @@ Order.init(
       type: DataTypes.BOOLEAN,
       defaultValue: false,
     },
+    other_dairy_preference: {
+      type: DataTypes.STRING,
+    },
     // eggs
     eggs: {
       type: DataTypes.BOOLEAN,
@@ -215,6 +218,9 @@ Order.init(
     butter: {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
+    },
+    eggs_butter_preference: {
+      type: DataTypes.STRING,
     },
     // =======================================
   //  produce
