@@ -1,10 +1,31 @@
 const sequelize = require('../config/connection.js');
 const { Client, Order, Feedback } = require('../models');
 
-const order = {
+const orders = [{
     ClientId: 1,
     milk: true,
-};
+    futureOrder:true,
+    pickupTime: new Date("06-06-2022 11:00")
+},
+{
+    ClientId: 1,
+    milk: true,
+    futureOrder:true,
+    pickupTime: new Date("06-06-2022 11:00")
+},
+{
+    ClientId: 1,
+    milk: true,
+    futureOrder:true,
+    pickupTime: new Date("06-06-2022 11:00")
+},
+{
+    ClientId: 1,
+    milk: true,
+    futureOrder:true,
+    pickupTime: new Date("06-06-2022 11:00")
+}
+];
 
 const admin = {
     email: process.env.ADMIN,
@@ -26,7 +47,7 @@ const feedbacks = [
 const seed = async () => {
     await sequelize.sync({ force: true });
     const cli = await Client.create(admin, { individualHooks: true });
-    await Order.create(order, { individualHooks: true });
+    await Order.bulkCreate(orders, { individualHooks: true });
     await Feedback.bulkCreate(feedbacks)
     console.log(cli)
     process.exit(0)

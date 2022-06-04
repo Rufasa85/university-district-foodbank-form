@@ -491,7 +491,13 @@ Order.init(
     hygiene_preference: {
       type: DataTypes.STRING,
     },
-  
+    futureOrder: {
+      type:DataTypes.BOOLEAN,
+      defaultValue:false
+    },
+    pickupTime:{
+      type:DataTypes.DATE
+    }
   },
 
   {

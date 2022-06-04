@@ -916,6 +916,14 @@
             <label for="notes" class="form-label">Any other notes, requests, or comments for the staff:</label>
             <textarea class="form-control" id="notes" rows="3"></textarea>
           </div>
+          <h3>When do you want to pickup this order?</h3>
+           <form class="row row-cols-lg-auto g-3 align-items-center new-order dateForm">
+              <input type="date" id="date-select">
+              <div class="timeBtns"></div>
+              <h3 class="hide no-slots-left">No available slots</h3>
+              <h3 class="selected-slot hide"></h3>
+              <button class="btn btn-info hide change-time-btn">Change pickup time </button>
+           </form>
           <button type="submit" id="submit-btn" class="btn btn-primary">Submit Order</button>
 </div>
 
